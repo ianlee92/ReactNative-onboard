@@ -1,17 +1,25 @@
 import React from 'react';
-import {SafeAreaView, Text, View, StatusBar, Image} from 'react-native';
+import {
+  SafeAreaView,
+  Text,
+  View,
+  StatusBar,
+  Image,
+  StyleSheet,
+} from 'react-native';
 import Onboard from './components/Onboard';
 import AppIntroSlider from 'react-native-app-intro-slider';
+import colors from './assets/colors/colors';
 
 const data = [
   {
-    title: '더 이상 시간을 낭비하지마세요!',
-    text: '현재 주변의 공부하기 좋은 카페를 찾아드려요.',
+    title: '더 이상 시간 낭비하지마세요!',
+    text: '관심있는 스터디를 손쉽게 찾아드려요.',
     image: require('./assets/images/Onboard1.png'),
   },
   {
-    title: '지금 스터디 카페 자리 있을까?',
-    text: '실시간으로 스카 자리 현황을 알려드려요.',
+    title: '지금 스터디 자리 있을까?',
+    text: '실시간으로 스터디원 현황을 알려드려요.',
     image: require('./assets/images/Onboard2.png'),
   },
   {
@@ -24,11 +32,11 @@ const data = [
 const App = () => {
   const renderItem = ({item}) => {
     return (
-      <View>
-        <Image source={item.image} />
+      <View style={styles.slide}>
+        <Image source={item.image} style={styles.image} />
         <View>
-          <Text>{item.title}</Text>
-          <Text>{item.text}</Text>
+          <Text style={styles.title}>{item.title}</Text>
+          <Text style={styles.text}>{item.text}</Text>
         </View>
       </View>
     );
@@ -47,5 +55,32 @@ const App = () => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  slide: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: colors.white,
+  },
+  image: {
+    marginVertical: 60,
+  },
+  title: {
+    fontSize: 20,
+    color: colors.black,
+    textAlign: 'center',
+    fontFamily: 'OpenSans-Bold',
+    marginHorizontal: 60,
+  },
+  text: {
+    fontSize: 14,
+    color: colors.gray,
+    textAlign: 'center',
+    fontFamily: 'OpenSans-SemiBold',
+    marginHorizontal: 60,
+    marginTop: 20,
+  },
+});
 
 export default App;
