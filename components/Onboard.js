@@ -28,7 +28,7 @@ const data = [
   },
 ];
 
-const Onboard = () => {
+const Onboard = props => {
   const renderItem = ({item}) => {
     return (
       <View style={styles.slide}>
@@ -63,6 +63,11 @@ const Onboard = () => {
       </View>
     );
   };
+
+  const handleDone = () => {
+    props.handleDone();
+  };
+
   return (
     <View style={{flex: 1}}>
       <StatusBar translucent backgroundColor="transparent" />
@@ -76,6 +81,7 @@ const Onboard = () => {
         dotStyle={styles.dotStyle}
         activeDotStyle={styles.activeDotStyle}
         data={data}
+        onDone={handleDone}
       />
     </View>
   );
